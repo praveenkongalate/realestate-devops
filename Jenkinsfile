@@ -16,13 +16,13 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh 'docker build -t realestate-website:jenkins .'
+                sh 'docker build -t realestate-website:build-${BUILD_NUMBER} .'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker compose up -d --build'
+                sh 'IMAGE_TAG=build-${BUILD_NUMBER} docker compose up -d'
             }
         }
     }

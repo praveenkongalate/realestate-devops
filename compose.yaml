@@ -1,7 +1,6 @@
 services:
   web:
-    build: .
+    image: realestate-website:${IMAGE_TAG}
     container_name: realestate-compose
     ports:
       - "8083:80"
-
