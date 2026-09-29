@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bangalore Real Estate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#14181C;
+    --stone:#EDE7DD;
+    --stone-2:#E2DACB;
+    --bronze:#B07A4A;
+    --bronze-deep:#8C5F38;
+    --sage:#5C6B5A;
+    --paper:#F7F4EE;
+    --line: rgba(20,24,28,0.14);
+    box-sizing:border-box;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#F7F4EE; --ink:#14181C;
+    }
+  }
+  html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px);}
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:'Work Sans', sans-serif; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:'Fraunces', serif; font-weight:500; margin:0; letter-spacing:-0.01em;}
+  a{color:inherit;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 28px;}
+
+  /* NAV */
+  nav{
+    position:sticky; top:0; top:env(safe-area-inset-top,0px);
+    z-index:10; background:rgba(247,244,238,0.88); backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav .wrap{display:flex; align-items:center; justify-content:space-between; height:76px;}
+  .brand{font-family:'Fraunces', serif; font-size:1.3rem; font-weight:600;}
+  .navlinks{display:flex; gap:32px; font-size:0.95rem;}
+  .navlinks a{text-decoration:none; opacity:0.75; transition:opacity .2s;}
+  .navlinks a:hover{opacity:1;}
+  .navlinks{display:none;}
+  @media(min-width:720px){.navlinks{display:flex;}}
+
+  /* HERO */
+  .hero{position:relative; overflow:hidden; background:var(--ink); color:var(--paper);}
+  .hero .wrap{
+    position:relative; z-index:2;
+    padding:96px 28px 140px;
+    display:grid; gap:40px;
+  }
+  @media(min-width:860px){
+    .hero .wrap{grid-template-columns:1.05fr 0.95fr; align-items:center; padding:80px 28px 100px;}
+  }
+  .hero-eyebrow{font-size:0.9rem; color:var(--bronze); margin-bottom:18px;}
+  .hero h1{font-size:clamp(2.4rem, 5.2vw, 3.9rem); line-height:1.06; max-width:12ch;}
+  .hero p{margin-top:22px; font-size:1.08rem; max-width:38ch; color:rgba(247,244,238,0.78);}
+  .hero-cta{margin-top:34px; display:flex; gap:16px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 26px;
+    border-radius:2px; font-size:0.95rem; text-decoration:none; font-weight:500;
+    transition:transform .18s ease, background .18s ease;
+  }
+  .btn-primary{background:var(--bronze); color:var(--ink);}
+  .btn-primary:hover{background:#c48c5c; transform:translateY(-1px);}
+  .btn-ghost{border:1px solid rgba(247,244,238,0.35); color:var(--paper);}
+  .btn-ghost:hover{border-color:rgba(247,244,238,0.7);}
+
+  .hero-art{position:relative; min-height:280px;}
+  .hero-art svg{width:100%; height:auto; display:block;}
+
+  /* ABOUT */
+  .about{padding:96px 0;}
+  .about .wrap{display:grid; gap:56px;}
+  @media(min-width:860px){.about .wrap{grid-template-columns:0.85fr 1.15fr; align-items:center;}}
+  .owner-frame{
+    aspect-ratio:4/5; border:1.5px dashed var(--bronze-deep); border-radius:2px;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    color:var(--bronze-deep); background:var(--stone-2); padding:24px;
+  }
+  .owner-frame span{font-size:0.85rem; max-width:22ch; line-height:1.5;}
+  .about-label{font-size:0.9rem; color:var(--bronze-deep); margin-bottom:14px;}
+  .about h2{font-size:clamp(1.9rem,3.4vw,2.6rem); max-width:14ch; margin-bottom:22px;}
+  .about p{max-width:56ch; color:rgba(20,24,28,0.78); margin-bottom:16px;}
+  .about-stats{display:flex; gap:40px; margin-top:32px; flex-wrap:wrap;}
+  .about-stats div{border-top:1px solid var(--line); padding-top:12px; min-width:110px;}
+  .about-stats strong{display:block; font-family:'Fraunces',serif; font-size:1.6rem; font-weight:500;}
+  .about-stats small{color:rgba(20,24,28,0.6); font-size:0.82rem;}
+
+  /* CONTACT */
+  .contact{background:var(--ink); color:var(--paper); padding:96px 0 84px;}
+  .contact .wrap{display:grid; gap:44px;}
+  @media(min-width:860px){.contact .wrap{grid-template-columns:1fr 1fr; align-items:start;}}
+  .contact h2{font-size:clamp(1.9rem,3.4vw,2.6rem); max-width:12ch;}
+  .contact p{color:rgba(247,244,238,0.7); margin-top:16px; max-width:40ch;}
+  .contact-links{display:flex; flex-direction:column; gap:0;}
+  .clink{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0; border-top:1px solid rgba(247,244,238,0.16);
+    text-decoration:none; color:var(--paper);
+  }
+  .contact-links .clink:last-child{border-bottom:1px solid rgba(247,244,238,0.16);}
+  .clink .label{font-size:0.82rem; color:rgba(247,244,238,0.55);}
+  .clink .val{font-family:'Fraunces',serif; font-size:1.25rem;}
+  .clink .arrow{opacity:0.5; transition:transform .18s;}
+  .clink:hover .arrow{transform:translateX(4px);}
+
+  footer{padding:26px 0; text-align:center; font-size:0.82rem; color:rgba(20,24,28,0.5);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Bangalore Real Estate</div>
+    <div class="navlinks">
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="hero-eyebrow">Residential &amp; Commercial Properties</div>
+      <h1>Spaces built around how you actually live</h1>
+      <p>Bangalore Real Estate helps you find, buy, and settle into a home that fits — with honest guidance from listing to keys.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="#about">Meet the owner</a>
+      </div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#2A3138"/>
+            <stop offset="1" stop-color="#14181C"/>
+          </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="520" height="420" fill="url(#sky)"/>
+        <circle cx="410" cy="90" r="46" fill="#B07A4A" opacity="0.9"/>
+        <!-- ground -->
+        <rect x="0" y="360" width="520" height="60" fill="#0F1215"/>
+        <!-- building 1 -->
+        <rect x="60" y="150" width="120" height="210" fill="#1D2226" stroke="#3A4147" stroke-width="1"/>
+        <g stroke="#B07A4A" stroke-width="1.2" opacity="0.85">
+          <line x1="80" y1="170" x2="80" y2="340"/>
+          <line x1="100" y1="170" x2="100" y2="340"/>
+          <line x1="120" y1="170" x2="120" y2="340"/>
+          <line x1="140" y1="170" x2="140" y2="340"/>
+          <line x1="160" y1="170" x2="160" y2="340"/>
+        </g>
+        <!-- building 2 (main, taller) -->
+        <rect x="200" y="70" width="150" height="290" fill="#23292E" stroke="#3A4147" stroke-width="1"/>
+        <g fill="#F7F4EE" opacity="0.14">
+          <rect x="216" y="94" width="26" height="34"/>
+          <rect x="254" y="94" width="26" height="34"/>
+          <rect x="292" y="94" width="26" height="34"/>
+          <rect x="216" y="144" width="26" height="34"/>
+          <rect x="254" y="144" width="26" height="34"/>
+          <rect x="292" y="144" width="26" height="34"/>
+          <rect x="216" y="194" width="26" height="34"/>
+          <rect x="254" y="194" width="26" height="34"/>
+          <rect x="292" y="194" width="26" height="34"/>
+          <rect x="216" y="244" width="26" height="34"/>
+          <rect x="254" y="244" width="26" height="34"/>
+          <rect x="292" y="244" width="26" height="34"/>
+        </g>
+        <!-- building 3 -->
+        <rect x="368" y="200" width="100" height="160" fill="#1D2226" stroke="#3A4147" stroke-width="1"/>
+        <g fill="#B07A4A" opacity="0.5">
+          <rect x="382" y="220" width="18" height="22"/>
+          <rect x="412" y="220" width="18" height="22"/>
+          <rect x="442" y="220" width="18" height="22"/>
+          <rect x="382" y="256" width="18" height="22"/>
+          <rect x="412" y="256" width="18" height="22"/>
+          <rect x="442" y="256" width="18" height="22"/>
+          <rect x="382" y="292" width="18" height="22"/>
+          <rect x="412" y="292" width="18" height="22"/>
+          <rect x="442" y="292" width="18" height="22"/>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="owner-frame">
+      <span>Owner photo goes here<br>(square or 4:5 portrait works best)</span>
+    </div>
+    <div>
+      <div class="about-label">About us</div>
+      <h2>Local expertise, built on trust</h2>
+      <p>Bangalore Real Estate was started with one idea: buying or renting property shouldn't feel like a guessing game. We walk every client through the process directly — no hand-offs, no scripts, just straight answers.</p>
+      <p>Replace this with your friend's real story — how they got started, what area they serve, and what makes their approach different.</p>
+      <div class="about-stats">
+        <div><strong>10+</strong><small>Years in real estate</small></div>
+        <div><strong>150+</strong><small>Properties closed</small></div>
+        <div><strong>1:1</strong><small>Direct owner support</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div>
+      <h2>Let's talk about your next property</h2>
+      <p>Reach out directly — every enquiry goes straight to the owner, not a call centre.</p>
+    </div>
+    <div class="contact-links">
+      <a class="clink" href="mailto:info@realestate.in">
+        <span><span class="label">Email</span><br><span class="val">info@realestate.in</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a class="clink" href="tel:+919111111111">
+        <span><span class="label">Phone</span><br><span class="val">+91 91111 11111</span></span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 Bangalore Real Estate. Demo layout — swap in real name, photos and details.</footer>
+
+</body>
+</html>
