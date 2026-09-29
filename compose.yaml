@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    container_name: realestate-compose
+    ports:
+      - "8083:80"
+
