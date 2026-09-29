@@ -19,5 +19,11 @@ pipeline {
                 sh 'docker build -t realestate-website:jenkins .'
             }
         }
+
+        stage('Deploy') {
+            steps {
+                sh 'docker compose up -d --build'
+            }
+        }
     }
 }
